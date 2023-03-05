@@ -1,12 +1,18 @@
-fn main() {
-    const _MY_VAR: u8 = 8;
-    static MY_STATIC_VAR: u8 = 4;
-    println!("{}", MY_STATIC_VAR);
+use std::env::{args, Args};
 
-    let my_string = String::from("Rohit Gupta");
-    let my_str: str = &my_string[4..9];
-    println!("{}", my_str[5]);
+fn main(){
+    let mut arugs:Args = args();
+    let first:u32 = args().nth(1).unwrap().parse::<u32>().unwrap();
+    let op:char = arugs.nth(2).unwrap().chars().next().unwrap();
+    let second:u32 = args().nth(3).unwrap().parse::<u32>().unwrap();
 
-    let my_arr: [usize;5] = [1, 2, 3, 4, 5];
-    let my_arra:[u8;5] = [1, 2];
+    println!("{} {} {}", first, op, second);
+    match op {
+        '+' => sum(first, second),
+        _ => panic!(" ")
+    };
+}
+
+fn sum(a:u32, b:u32){
+   println!("{}",a+b);
 }
